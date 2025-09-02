@@ -1,9 +1,12 @@
 import readlinesync = require("readline-sync");
-
+import { colors } from "./src/util/color";
+import { Conta } from './src/model/Conta';
 export function menu (){
     let opcao: number;
     while (true){
-        console.log("****************************************************");
+
+        console.log(colors.bg.black, colors.fg.yellow,
+            "****************************************************");
         console.log("                                                    ");
         console.log("              BANCO SOL NASCENTE                    ");
         console.log("                                                    ");
@@ -19,45 +22,81 @@ export function menu (){
         console.log("               8 - Transferir Valores Entre Contas  ");
         console.log("               9 - Sair                             ");
         console.log("                                                    ");
-        console.log("****************************************************");
-        opcao= readlinesync.questionInt("Escolha uma opcao: ");
+        console.log("****************************************************",
+            colors.reset);
+        
+        console.log(colors.fg.yellow,'Escolha uma opção:', colors.reset);
+        opcao= readlinesync.questionInt('');
 
         if (opcao==9){
-            console.log('\nBanco SOL NASCENTE agradece a preferência. Volte sempre!\n');
-            
+            console.log(colors.fg.greenstrong, 
+                '\nBANCO SOL NASCENTE agradece a preferência. Volte sempre!\n');
+            sobre();
+            console.log(colors.reset, "");
+            break;
         }
         switch (opcao){
             case 1:
-                console.log('\nCriar Conta\n');
+                console.log(colors.fg.greenstrong, 
+                    '\nCriar Conta\n', colors.reset);
+                    Keypress();
                 break;
             case 2:
-                console.log('\nlistar todas as contas\n');  
+                console.log(colors.fg.greenstrong,
+                    '\nlistar todas as contas\n', colors.reset);  
+                    Keypress();
                 break;
             case 3:
-                console.log('\nBuscar Conta por Número\n');
+                console.log(colors.fg.greenstrong,
+                    '\nBuscar Conta por Número\n', colors.reset);
+                    Keypress();
                 break;
             case 4:
-                console.log('\nAtualizar Dados da conta\n');
+                console.log(colors.fg.greenstrong,
+                    '\nAtualizar Dados da conta\n', colors.reset);
+                    Keypress();
                 break;
             case 5:
-                console.log('\nApagar Conta\n');
+                console.log(colors.fg.greenstrong, 
+                    '\nApagar Conta\n', colors.reset);
+                    Keypress();
                 break;
             case 6:
-                console.log('\nSacar\n');
+                console.log(colors.fg.greenstrong,
+                    '\nSacar\n', colors.reset);
+                    Keypress();
                 break;
             case 7:
-                console.log('\nDepositar\n');
+                console.log(colors.fg.greenstrong,
+                    '\nDepositar\n', colors.reset);
+                    Keypress();
                 break;
             case 8:
-                console.log('\nTransferir valores entre contas\n');
+                console.log(colors.fg.greenstrong,
+                    '\nTransferir valores entre contas\n');
+                    Keypress();
                 break;
             default:
-                console.log('\nOpção Inválida\n');
+                console.log(colors.fg.greenstrong,
+                    '\nOpção Inválida\n', colors.reset);
+                    Keypress();
                 break;
-
 
 
         }    
     }
+}
+function Keypress(): void {
+    console.log(colors.reset, '');
+    console.log('pressione ENTER para continuar...');
+    readlinesync.question('');
+}
+
+export function sobre(): void {
+    console.log("\n*****************************************************");
+    console.log("Projeto Desenvolvido por: ");
+    console.log("Generation Brasil - generation@generation.org");
+    console.log("github.com/conteudoGeneration");
+    console.log("*****************************************************");
 }
 menu ();
