@@ -41,4 +41,14 @@ export class ContaController implements ContaRepository{
         return ++this.numero;
     }
 
+    public buscarNoArray(numero: number): Conta | undefined {
+        
+        for (let conta of this.listaContas){
+            if (conta.numero === numero)
+                return conta;
+        }
+
+        return undefined;
+    }
+
 }
